@@ -40,6 +40,7 @@ OrderNo、Notify_url、Total_fee、Title、Body
 ## 微信
 1. 签名与打包问题
 *  接入微信支付，需要app签名打包后才可以调起
+*  APPID :你在微信开放平台创建的app的APPID
 *  如果签名？ 签名：将APP打一个正式环境的包，然后在微信开放平台下载签名工具使用正确全包名进行打包（全包名gradle获取）
 *  快捷的测试：在build.gradle文件中设置debug环境和relealse环境的签名相同就可以快捷支付，免签名，直接测试
 ```
@@ -63,7 +64,7 @@ signingConfigs {
  ```
  2. 在目录下添加wxapi的包名，在这个包名下必须要有WXPayEntryActivity这个Activity，支付成功后会显示此界面。
  3. 如果无法调起微信支付，请跟服务器端联合处理。大多无法调起的情况，服务器都未按照官方文档返回正确的参数。
-　```
+```
   PayReq payReq = new PayReq();
   payReq.appId = Constant.APP_ID;
   payReq.partnerId = data.getPartnerid();
@@ -83,10 +84,14 @@ signingConfigs {
    * timestamp : 1484129387
    * sign : A9F0CEB4809B24AADACB6FD3BC65E25F
    * OrderNo : 2020LRSADLWQ
-
- ```       
- 
- 4.  
+```    
+ 4. 在功能清单中对Activity中进行注册
+ ```
+  <!--微信支付-->
+ <activity android:name=".wxapi.WXPayEntryActivity"
+           android:exported="true"
+           android:launchMode="singleTop"/>
+ ```
  
         
          
