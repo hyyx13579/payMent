@@ -36,3 +36,30 @@
 ```
 *  请求订单接口返回的参数，保证与创建订单的方法要求的属性相互对应
 OrderNo、Notify_url、Total_fee、Title、Body
+
+## 微信
+1. 签名与打包问题
+*  接入微信支付，需要app签名打包后才可以调起
+*  如果签名？ 签名：将APP打一个正式环境的包，然后在微信开放平台下载签名工具使用正确全包名进行打包（全包名gradle获取）
+*  快捷的测试：在build.gradle文件中设置debug环境和relealse环境的签名相同就可以快捷支付，免签名，直接测试
+```
+signingConfigs {
+
+        release {
+            //.jks文件放在项目目录
+            storeFile file("xxx.jks")
+            storePassword "xxx"
+            keyAlias "xxx.release"
+            keyPassword "xxx"
+        }
+        debug {
+            //.jks文件放在项目目录
+            storeFile file("xxx.jks")
+            storePassword "xxx"
+            keyAlias "xxx.release"
+            keyPassword "xxx"
+        }
+    }
+ ```
+ 2. 在目录下添加wxapi的包名，在这个包名下必须要有WXPayEntryActivity这个Activity，支付成功后会显示此界面。
+ 3. 
