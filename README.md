@@ -62,4 +62,33 @@ signingConfigs {
     }
  ```
  2. 在目录下添加wxapi的包名，在这个包名下必须要有WXPayEntryActivity这个Activity，支付成功后会显示此界面。
- 3. 
+ 3. 如果无法调起微信支付，请跟服务器端联合处理。大多无法调起的情况，服务器都未按照官方文档返回正确的参数。
+　```
+  PayReq payReq = new PayReq();
+  payReq.appId = Constant.APP_ID;
+  payReq.partnerId = data.getPartnerid();
+  payReq.prepayId = data.getPrepayid();
+  payReq.packageValue = data.getPackageX();
+  payReq.nonceStr = data.getNoncestr();
+  payReq.timeStamp = data.getTimestamp();
+  payReq.sign = data.getSign();
+  
+  
+  //服务器返回的参数信息
+   * appid : wxaf67330ccf5ac7a3
+   * noncestr : PUKWtjo56lGOGyi1
+   * package : Sign=WXPay
+   * partnerid : 1413033602
+   * prepayid : wx201701111812202e68f897cc0417291944
+   * timestamp : 1484129387
+   * sign : A9F0CEB4809B24AADACB6FD3BC65E25F
+   * OrderNo : 2020LRSADLWQ
+
+ ```       
+ 
+ 4.  
+ 
+        
+         
+ 
+ 
