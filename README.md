@@ -12,7 +12,7 @@ SELLER：商户的收款账号
 RSA_PRIVATE：商户私钥，pkcs8格式
 3. 支付中需要注意的几点
 在商户应用工程的AndroidManifest.xml文件里面添加声明：
-`<activity
+ ` <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
@@ -23,10 +23,10 @@ RSA_PRIVATE：商户私钥，pkcs8格式
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" >
- </activity>`
+ </activity> `
  权限声明
-`<uses-permission android:name="android.permission.INTERNET" />
+` <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />`
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> `
